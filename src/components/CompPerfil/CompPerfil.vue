@@ -3,11 +3,11 @@
     <div class="row">
       <Header title="Perfil"/>
     </div>
-    <div class="bg-light-emphasis h-100 mt-5">
-      <div class="d-flex flex-column align-items-center bg-primary mt-4 h-75 rounded-2">
+    <div class="bg-warning h-75 mt-5">
+      <div class="d-flex flex-column align-items-center bg-primary mt-4 h-100 rounded-2">
         <img src="https://www.nicepng.com/png/detail/608-6080578_png-file-svg-icono-de-persona-png.png" alt="" class="img-fluid rounded-circle mt-4" style="width: 150px; height: 150px;">
-        <div class="bg-white square rounded mt-4 text-center">
-          <h4 class="">Informacion Basica</h4>
+        <div class="bg-white square rounded mt-4 text-center h-50">
+          <h4 class="mt-3">Informacion Basica</h4>
           <hr class="border-5">
           <p class="text-start mb-4" style="margin-left: 50px;">Nombre: Jose</p>
           <p class="text-start mb-4" style="margin-left: 50px;">Apellido: Blanco</p>
