@@ -1,5 +1,5 @@
 <template>
-  <div class="container vh-100">
+  <div class="container vh-100 pt-5">
     <div class="row">
       <Header title="Perfil"/>
     </div>
