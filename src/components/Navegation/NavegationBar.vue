@@ -2,7 +2,7 @@
   <div 
   class="d-flex flex-column align-items-center bg-light h-75 my-4 rounded-3 p-3 shadow border border-1"
   >
-    <h1 class="display-6 text-secondary fw-bold mt-4">Navegación</h1>
+    <p class="fs-2 text-secondary fw-bold mt-4">Navegación</p>
     <div class="d-flex flex-column mt-5 gap-5">
       <NavegationButton icono="fa-solid fa-house" content="Inicio"/>
       <NavegationButton icono="fa-solid fa-user" content="Perfil"/>
