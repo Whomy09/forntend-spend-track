@@ -4,7 +4,7 @@
       <Header title="Gastos" />
     </div>
     <div class="mt-5 h-75">
-      <button class="btn btn-light btn-lg border border-1 shadow-sm">Agregar</button>
+      <router-link to="/registro-gastos" class="btn btn-light btn-lg border border-1 shadow-sm">Agregar</router-link>
       <div
         class="bg-body-secondary mt-4 h-75 rounded-2 pt-2 px-3"
         id="contenedor-tabla"
