@@ -1,5 +1,5 @@
 <template>
-  <div class="container h-100">
+  <div class="container h-100 pt-5">
     <div class="row">
       <Header title="Gastos" />
     </div>
@@ -9,7 +9,6 @@
         class="bg-body-secondary mt-4 h-75 rounded-2 pt-2 px-3"
         id="contenedor-tabla"
       >
-      <!-- Despues de 17 datos se coloca mas grande -->
         <TablePrincipal/>
       </div>
     </div>

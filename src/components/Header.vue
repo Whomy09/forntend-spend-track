@@ -1,5 +1,5 @@
 <template>
-  <header class="d-flex justify-content-between align-items-center mt-5 col-12">
+  <header class="d-flex justify-content-between align-items-center col-12">
     <h2 class="text-secondary bg-light px-5 py-1 rounded-3 shadow-sm border border-1">
       {{ title }}
     </h2>
