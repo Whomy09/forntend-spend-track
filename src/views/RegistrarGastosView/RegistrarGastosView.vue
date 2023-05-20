@@ -21,7 +21,7 @@
           <label class="text-body-secondary fw-semibold fs-5" for="cantidad">Cantidad:</label>
           <input class="rounded-1 border border-0 p-1" type="number" id="cantidad" placeholder="0">
         </div>
-      </div>
+      </div>//3
       <div class="d-flex justify-content-center mt-5 gap-5">
         <button class="btn btn-light border" style="width: 150px;">Guardar</button>
         <button class="btn btn-light border" style="width: 150px;">Cancelar</button>

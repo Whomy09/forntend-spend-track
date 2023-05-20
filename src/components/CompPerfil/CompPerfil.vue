@@ -14,6 +14,9 @@
           <p class="text-start mb-4" style="margin-left: 50px;">Ciudad: Barranquilla</p>
           <p class="text-start mb-4" style="margin-left: 50px;">Correo: correo123@gmail.com</p>
         </div>
+        <div class="d-flex justify-content-center mt-5 gap-5">
+          <router-link to="/editar-perfil" class="btn btn-light border" style="width: 150px;">editar</router-link>
+        </div>
       </div>
     </div>
   </div>
