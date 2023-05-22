@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Navegation from './components/Navegation/NavegationBar.vue';
 </script>
-
+<!--
 <template>
   <div class="container-fluid vh-100">
     <div class="row h-100 w-100">
@@ -14,6 +14,12 @@ import Navegation from './components/Navegation/NavegationBar.vue';
     </div>
   </div>
 </template>
+-->
+
+<template>
+    <RouterView />
+</template>
+
 
 <style>
 body {

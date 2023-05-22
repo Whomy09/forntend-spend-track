@@ -5,6 +5,8 @@ import RegistrarGastosView from '@/views/RegistrarGastosView/RegistrarGastosView
 import Editarperfil from '@/views/EditarPerfilView/EditarPerfilView.vue'
 import PresupuestosView from '@/views/PresupuestosView/PresupuestosView.vue'
 import RegistrarPresupuestoView from '@/views/RegistrarPresupuestoView/RegistrarPresupuestoView.vue'
+import Login from '@/views/LoginView/LoginView.vue'
+import Register from '@/views/RegisterView/RegisterView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -33,6 +35,14 @@ const router = createRouter({
     {
       path: '/registrar-presupuesto',
       component: RegistrarPresupuestoView
+    },
+    {
+      path: '/register',
+      component: Register
+    },
+    {
+      path: '/login',
+      component: Login
     }
   ]
 })
