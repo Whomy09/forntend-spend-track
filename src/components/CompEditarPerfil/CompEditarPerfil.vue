@@ -1,7 +1,12 @@
 <template>
   <div class="container vh-100 pt-5">
+      <div class="row">
+      <div v-if="aler_danger" class="alert alert-danger d-flex justify-content-center" role="alert" style="font-size: 23px; position: absolute; width: 1350px; height: 60px;"> Tienes Que Llenar Todo Los Campos</div>
+    <div v-if="aler_success" class="alert alert-success d-flex justify-content-center" role="alert" style="font-size: 23px; position: absolute; width: 1350px; height: 60px;"> Cambio Realizado</div>
+    </div>
+    
     <div class="row">
-      <Header title="Editar perfil"/>
+      <Header title="Editar perfill"/>
     </div>
     <div class="bg-warning h-75 mt-5">
       <div class="d-flex flex-column align-items-center bg-primary mt-4 h-100 rounded-2">
@@ -33,18 +38,43 @@
   </div>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts" >
 import Header from '@/components/Header.vue';
+import {ref} from "vue";
+import type {Ref} from "vue";
+import { validar } from '@/helpers/validacionesEditarPerfil/validationEditarPerfil';
+
 
 let nombre = '';
 let apellido = '';
 let ciudad = '';
 let correo = '';
 
-function guardarPerfil() {
-  // Lógica para guardar el perfil
-}
+let aler_danger:Ref<boolean>=ref(false);
+let aler_success:Ref<boolean>=ref(false);
 
+
+
+const guardarPerfil=()=> {
+  if (validar(nombre,apellido,ciudad,correo)) {
+    aler_success.value=true;
+
+    setTimeout(() => {
+      aler_success.value=false;
+    }, 1500); 
+
+    // guardar los nuevos datos
+    
+  }else{
+   
+    aler_danger.value=true;
+
+    setTimeout(() => {
+      aler_danger.value=false;
+    }, 1500); 
+  }
+}
+  
 </script>
 
 <style scoped>
