@@ -16,6 +16,10 @@
                   <input type="email" id="email" class="form-control" v-model="email" required>
                 </div>
                 <div class="form-group">
+                  <label for="ciudad">Ciudad</label>
+                  <input type="text" id="ciudad" class="form-control" v-model="ciudad" required>
+                </div>
+                <div class="form-group">
                   <label for="password">Contraseña</label>
                   <input type="password" id="password" class="form-control" v-model="password" required>
                 </div>
@@ -36,6 +40,7 @@ import { ref } from 'vue';
 const name = ref('');
 const email = ref('');
 const password = ref('');
+let ciudad = ref("");
 
 
 </script>

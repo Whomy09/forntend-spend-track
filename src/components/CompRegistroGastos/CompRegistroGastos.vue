@@ -48,7 +48,7 @@
         </div>
         <div class="d-flex justify-content-center gap-5">
           <button class="btn btn-light border" @click="guardar" style="width: 150px">Guardar</button>
-          <button class="btn btn-light border" style="width: 150px">Cancelar</button>
+          <router-link to="/" class="btn btn-light border" style="width: 150px">Cancelar</router-link>
         </div>
         <div 
         class="bg-danger-subtle w-25 rounded-2 text-danger p-3 text-center border border-3 border-danger-subtle"
