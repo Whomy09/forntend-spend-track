@@ -5,13 +5,13 @@
         <Navegation/>
       </div>
       <div class="col-10 h-100">
-          <CompRegistroGastos/>
+          <CompRegistrarPresupuesta/>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import CompRegistroGastos from '@/components/CompRegistroGastos/CompRegistroGastos.vue'
+import CompRegistrarPresupuesta from '@/components/CompRegistrarPresupuesta/CompRegistrarPresupuesta.vue';
 import Navegation from '@/components/Navegation/NavegationBar.vue'
 </script>
