@@ -14,7 +14,7 @@
         <td>{{ (index + 1) }}</td>
         <td>{{ gasto.categoria }}</td>
         <td>{{ gasto.cantidad }}</td>
-        <td>{{ gasto.tipoDePago }}</td>
+        <td>{{ gasto.tipoPago }}</td>
         <td>{{ gasto.fecha }}</td>
       </tr>
     </tbody>
@@ -22,20 +22,24 @@
 </template>
 
 <script lang="ts" setup>
-interface Gasto {
-  categoria: string
-  cantidad: number
-  fecha: string
-  tipoDePago: string
+import {ref} from "vue";
+import type {Ref} from "vue"
+import type {IGasto} from '../../interfaces/IGasto'
+import getAllGastos from "../../helpers/services/getAllGastos/getAllGastos"
+
+
+
+let gastos:Ref<IGasto[]> = ref([]);
+
+
+ async function llenarTablagastos() {
+  gastos.value = await getAllGastos(); 
+
+   
 }
-const gastos: Array<Gasto> = [
-{
-  categoria: 'Alimento',
-  cantidad: 1500,
-  fecha: '18/05/2023',
-  tipoDePago: 'Efectivo'
-  }
-]
+
+llenarTablagastos();
+
 </script>
 
 <style scoped></style>

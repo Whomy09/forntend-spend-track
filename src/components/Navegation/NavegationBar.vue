@@ -50,13 +50,15 @@
             >
               Cancelar
             </button>
-            <button
+            <router-link
+            @click="cerrarSesion"
+            to="/login"
               type="button"
               class="btn btn-primary"
-              @click="cerrarSesion"
+              
             >
               Cerrar sesión
-            </button>
+          </router-link>
           </div>
         </div>
       </div>
@@ -71,7 +73,7 @@
 <script lang="ts" setup>
 import NavegationButton from './NavegationButton.vue';
 const cerrarSesion=()=>{
-  
+  localStorage.removeItem('usuario');
 }
 </script>
 

@@ -10,33 +10,38 @@
       </tr>
     </thead>
     <tbody>
-       <!-- 
-        <tr v-for="">
-          <td>{{ index }}</td>
-          <td>{{ elm.description }}</td>
-          <td>{{ index }}</td>
-          <td>{{ index }}</td>
-          <td>{{ index }}</td>
+     
+        <tr v-for="(presupuesto,index) in presupuestos" :key="index">
+          <td>{{ index + 1 }}</td>
+          <td>{{ presupuesto.descripcion }}</td>
+          <td>{{presupuesto.categoria }}</td>
+          <td>{{ presupuesto.fecha }}</td>
+          <td>{{ presupuesto.cantidad }}</td>
         </tr>
-        -->
-      <tr>
-        <td>1</td>
-        <td>Compre arroz</td>
-        <td>alimento</td>
-        <td>10/05/2023</td>
-        <td>15</td>
-      </tr>
+       
     </tbody>
   </table>
 </template>
 
 <script lang="ts" setup>
+import type {IPresupuesto} from "../../interfaces/IPresupuesto"
+import {ref} from "vue";
+import type {Ref} from "vue";
 import getAllPresupuestos from '../../helpers/services/getAllPresupuestos/getAllPresupuestos'
-let presupuestos = [];
- function llenarTablaPresupuestos() {
-   presupuestos = getAllPresupuestos(); 
+
+let presupuestos:Ref<IPresupuesto[]> = ref([]);
+
+
+ async function llenarTablaPresupuestos() {
+   presupuestos.value = await getAllPresupuestos(); 
+   console.log(presupuestos.value)
 }
+
 llenarTablaPresupuestos();
+
+
+
+
 </script>
 
 <style scoped>

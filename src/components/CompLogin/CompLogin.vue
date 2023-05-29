@@ -16,7 +16,7 @@
                   <input type="password" id="password" class="form-control" v-model="password" required>
                 </div>
                 <div class="text-center">
-                  <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+                  <router-link to="/" class="btn btn-primary" @click="entrar(email,password)">Iniciar sesión</router-link>
                 </div>
             </div>
             <div class="card-footer text-center">
@@ -30,9 +30,20 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
+import type {Ref} from "vue";
+import login from "../../helpers/services/login/login"
 
-const email = ref('');
-const password = ref('');
+const email:Ref<string> = ref('');
+const password:Ref<string> = ref('');
+
+const entrar= async (email:string,password:string)=>{
+const usuario = await login(email,password)
+
+const usuarioJSON:string = JSON.stringify(usuario);
+
+localStorage.setItem('usuario', usuarioJSON);
+}
+
 
 </script>
 

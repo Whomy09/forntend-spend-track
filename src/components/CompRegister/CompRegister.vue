@@ -1,48 +1,77 @@
 <template>
-    <div class="container">
-      <div class="row justify-content-center align-items-center vh-100" style="margin-top: -100px;">
-        <div class="col-md-6">
-          <div class="card">
-            <div class="card-header">
-              <h2 class="text-center">Registrarse</h2>
+  <div class="container">
+    <div class="row justify-content-center align-items-center vh-100" style="margin-top: -100px">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="text-center">Registrarse</h2>
+          </div>
+          <div class="card-body">
+            <div class="form-group">
+              <label for="name">Nombre</label>
+              <input type="text" id="name" class="form-control" v-model="name" required />
             </div>
-            <div class="card-body">
-                <div class="form-group">
-                  <label for="name">Nombre</label>
-                  <input type="text" id="name" class="form-control" v-model="name" required>
-                </div>
-                <div class="form-group">
-                  <label for="email">Correo electrónico</label>
-                  <input type="email" id="email" class="form-control" v-model="email" required>
-                </div>
-                <div class="form-group">
-                  <label for="ciudad">Ciudad</label>
-                  <input type="text" id="ciudad" class="form-control" v-model="ciudad" required>
-                </div>
-                <div class="form-group">
-                  <label for="password">Contraseña</label>
-                  <input type="password" id="password" class="form-control" v-model="password" required>
-                </div>
-                <button  type="submit" class="btn btn-primary btn-block">Registrarse</button>
+            <div class="form-group">
+              <label for="apellido">apellido</label>
+              <input type="text" id="apellido" class="form-control" v-model="apellido" required />
             </div>
-            <div class="card-footer text-center">
-              <p>¿Ya tienes una cuenta? <router-link to="/login">Iniciar sesión</router-link></p>
+            <div class="form-group">
+              <label for="email">Correo electrónico</label>
+              <input type="email" id="email" class="form-control" v-model="email" required />
             </div>
+            <div class="form-group">
+              <label for="ciudad">Ciudad</label>
+              <input type="text" id="ciudad" class="form-control" v-model="ciudad" required />
+            </div>
+            <div class="form-group">
+              <label for="password">Contraseña</label>
+              <input
+                type="password"
+                id="password"
+                class="form-control"
+                v-model="password"
+                required
+              />
+            </div>
+            <button @click="llamar" type="submit" class="btn btn-primary btn-block">
+              Registrarse
+            </button>
+          </div>
+          <div class="card-footer text-center">
+            <p>¿Ya tienes una cuenta? <router-link to="/login">Iniciar sesión</router-link></p>
           </div>
         </div>
       </div>
     </div>
-  </template>
+  </div>
+</template>
 
-  <script lang="ts" setup>
-import { ref } from 'vue';
+<script lang="ts" setup>
+import { ref } from 'vue'
+import enviar from '../../helpers/services/registro/registro'
+import type {Ref} from 'vue';
 
-const name = ref('');
-const email = ref('');
-const password = ref('');
-let ciudad = ref("");
+import type { IUsuario } from '@/interfaces/IUsuario';
 
+let name = ref('')
+let apellido = ref('')
+let email = ref('')
+let password = ref('')
+let ciudad = ref('')
 
+const llamar = () => {
+  const usuario:Ref<IUsuario> = ref({
+    id: 0,
+    password: password.value,
+    nombre: name.value,
+    apellidos: apellido.value,
+    ciudad: ciudad.value,
+    correo: email.value
+  })
+
+  enviar(usuario.value);
+  console.log(usuario.value)
+}
 </script>
 
 <style scoped>
