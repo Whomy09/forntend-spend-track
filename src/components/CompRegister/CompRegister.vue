@@ -4,6 +4,22 @@
       <div class="col-md-6">
         <div class="card">
           <div class="card-header">
+            <div
+              v-if="aler_danger"
+              class="alert alert-danger d-flex justify-content-center"
+              role="alert"
+              style="font-size: 23px;"
+            >
+              Tienes Que Llenar Todo Los Campos
+            </div>
+            <div
+              v-if="aler_success"
+              class="alert alert-success d-flex justify-content-center"
+              role="alert"
+              style="font-size: 23px;"
+            >
+              Se creo un nuevo perfil
+            </div>
             <h2 class="text-center">Registrarse</h2>
           </div>
           <div class="card-body">
@@ -49,9 +65,10 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import enviar from '../../helpers/services/registro/registro'
-import type {Ref} from 'vue';
+import { validar } from '@/helpers/validacionRegistrar/validacionRegistrar'
+import type { Ref } from 'vue'
 
-import type { IUsuario } from '@/interfaces/IUsuario';
+import type { IUsuario } from '@/interfaces/IUsuario'
 
 let name = ref('')
 let apellido = ref('')
@@ -59,18 +76,36 @@ let email = ref('')
 let password = ref('')
 let ciudad = ref('')
 
-const llamar = () => {
-  const usuario:Ref<IUsuario> = ref({
-    id: 0,
-    password: password.value,
-    nombre: name.value,
-    apellidos: apellido.value,
-    ciudad: ciudad.value,
-    correo: email.value
-  })
+let aler_danger: Ref<boolean> = ref(false)
+let aler_success: Ref<boolean> = ref(false)
 
-  enviar(usuario.value);
-  console.log(usuario.value)
+const llamar = () => {
+  if (validar(name.value, apellido.value, ciudad.value, email.value, password.value)) {
+    aler_success.value = true
+
+    setTimeout(() => {
+      aler_success.value = false
+    }, 2000)
+
+    // guardar los nuevos datos
+    const usuario: Ref<IUsuario> = ref({
+      id: 0,
+      password: password.value,
+      nombre: name.value,
+      apellidos: apellido.value,
+      ciudad: ciudad.value,
+      correo: email.value
+    })
+
+    enviar(usuario.value)
+    console.log(usuario.value)
+  } else {
+    aler_danger.value = true
+
+    setTimeout(() => {
+      aler_danger.value = false
+    }, 2000)
+  }
 }
 </script>
 
