@@ -3,4 +3,5 @@
     cantidad: number
     fecha: string
     tipoPago: string
+    descripcion:string
   }

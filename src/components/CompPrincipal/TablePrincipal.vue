@@ -3,6 +3,7 @@
     <thead>
       <tr>
         <th class="border-bottom border-black">#</th>
+        <th class="border-bottom border-black">DESCRIPCION</th>
         <th class="border-bottom border-black">CATEGORIA</th>
         <th class="border-bottom border-black">CANTIDAD</th>
         <th class="border-bottom border-black">TIPO DE PAGO</th>
@@ -12,6 +13,7 @@
     <tbody>
       <tr v-for="(gasto, index) in gastos" :key="index">
         <td>{{ (index + 1) }}</td>
+        <td>{{ gasto.descripcion }}</td>
         <td>{{ gasto.categoria }}</td>
         <td>{{ gasto.cantidad }}</td>
         <td>{{ gasto.tipoPago }}</td>
@@ -31,14 +33,16 @@ import getAllGastos from "../../helpers/services/getAllGastos/getAllGastos"
 
 let gastos:Ref<IGasto[]> = ref([]);
 
+const usuarioJSON = localStorage.getItem('usuario');
+const jsonObj = JSON.parse(usuarioJSON);
 
- async function llenarTablagastos() {
-  gastos.value = await getAllGastos(); 
 
+ async function llenarTablagastos(id:number) {
+  gastos.value = await getAllGastos(id); 
    
 }
 
-llenarTablagastos();
+llenarTablagastos(jsonObj.id);
 
 </script>
 

@@ -46,6 +46,17 @@
             v-model="cantidad"
           />
         </div>
+
+        <div class="d-flex gap-3">
+          <label class="text-body-secondary fw-semibold fs-5" for="descripcion">Descripcion:</label>
+          <textarea
+            class="rounded-1 border border-0 p-1"
+            id="descripcion"
+            placeholder=""
+            v-model="descripcion"
+          ></textarea>
+        </div>
+
         <div class="d-flex justify-content-center gap-5">
           <button class="btn btn-light border" @click="guardar" style="width: 150px">Guardar</button>
           <router-link to="/" class="btn btn-light border" style="width: 150px">Cancelar</router-link>
@@ -70,6 +81,9 @@
 <script lang="ts" setup>
 import Header from '@/components/Header.vue'
 import { ref } from 'vue'
+import type {IGasto} from '../../interfaces/IGasto';
+import createGasto from '../../helpers/services/createGastos/createGastos';
+import type {Ref} from 'vue';
 import {
   validarFecha,
   validarTipoDePago,
@@ -81,6 +95,7 @@ const fecha = ref('');
 const tipoDePago = ref('');
 const categoria = ref('');
 const cantidad = ref(0);
+const descripcion=ref("");
 let infoError = ref('');
 let infoSuccess = ref('');
 
@@ -95,6 +110,20 @@ function guardar() {
   if (validCantidad !== true) return infoError.value = validCantidad;
   infoError.value = '';
   infoSuccess.value = 'Guardado correctamente!';
+
+  let gasto:Ref<IGasto> = ref({
+    categoria: categoria.value,
+    cantidad: cantidad.value,
+    fecha: fecha.value,
+    tipoPago: tipoDePago.value,
+    descripcion:descripcion.value
+  });
+  const usuarioJSON = localStorage.getItem('usuario');
+  const jsonObj = JSON.parse(usuarioJSON);
+
+ 
+  createGasto(jsonObj.id,gasto.value);
+
 }
 </script>
 

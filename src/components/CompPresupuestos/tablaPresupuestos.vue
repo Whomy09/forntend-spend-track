@@ -31,13 +31,14 @@ import getAllPresupuestos from '../../helpers/services/getAllPresupuestos/getAll
 
 let presupuestos:Ref<IPresupuesto[]> = ref([]);
 
+const usuarioJSON = localStorage.getItem('usuario');
+const jsonObj = JSON.parse(usuarioJSON);
 
- async function llenarTablaPresupuestos() {
-   presupuestos.value = await getAllPresupuestos(); 
-   console.log(presupuestos.value)
+ async function llenarTablaPresupuestos(id:number) {
+   presupuestos.value = await getAllPresupuestos(id); 
 }
 
-llenarTablaPresupuestos();
+llenarTablaPresupuestos(jsonObj.id);
 
 
 
