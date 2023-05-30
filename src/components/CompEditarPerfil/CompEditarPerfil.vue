@@ -63,14 +63,22 @@
 
 <script setup lang="ts">
 import Header from '@/components/Header.vue'
+import {updateCliente} from '../../helpers/services/updateCliente/updateCliente'
 import { ref } from 'vue'
 import type { Ref } from 'vue'
 import { validar } from '@/helpers/validacionesEditarPerfil/validationEditarPerfil'
+import type { IUsuario } from '@/interfaces/IUsuario'
+import { useRouter } from 'vue-router'
 
-let nombre = ''
-let apellido = ''
-let ciudad = ''
-let correo = ''
+const data = localStorage.getItem('usuario')
+const usuario: IUsuario = JSON.parse(data)
+const router = useRouter()
+
+let nombre = usuario.nombre
+let apellido = usuario.apellidos
+let ciudad = usuario.ciudad
+let correo = usuario.correo
+let password = usuario.password
 
 let aler_danger: Ref<boolean> = ref(false)
 let aler_success: Ref<boolean> = ref(false)
@@ -83,7 +91,23 @@ const guardarPerfil = () => {
       aler_success.value = false
     }, 1500)
 
-    // guardar los nuevos datos
+    updateCliente(usuario.id, {
+      nombre,
+      apellidos: apellido,
+      ciudad,
+      correo,
+      password
+    });
+
+    usuario.nombre = nombre;
+    usuario.apellidos = apellido;
+    usuario.ciudad = ciudad;
+    usuario.correo = correo;
+
+    localStorage.setItem('usuario', JSON.stringify(usuario))
+    setTimeout(() => {
+      router.push("/perfil")
+    }, 2000)
   } else {
     aler_danger.value = true
 
