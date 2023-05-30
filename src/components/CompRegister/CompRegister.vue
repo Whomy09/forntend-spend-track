@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row justify-content-center align-items-center vh-100" style="margin-top: -100px">
       <div class="col-md-6">
-        <div class="card">
+        <div class="card" style="margin-top: 7rem;">
           <div class="card-header">
             <div
               v-if="aler_danger"

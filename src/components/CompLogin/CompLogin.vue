@@ -16,7 +16,7 @@
                   <input type="password" id="password" class="form-control" v-model="password" required>
                 </div>
                 <div class="text-center">
-                  <button class="btn btn-primary" @click="entrar(email,password)">Iniciar sesión</button>
+                  <button class="btn btn-primary mt-4" @click="entrar(email,password)">Iniciar sesión</button>
                 </div>
             </div>
             <div class="card-footer text-center">
