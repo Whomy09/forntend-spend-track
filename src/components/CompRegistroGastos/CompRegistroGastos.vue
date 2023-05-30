@@ -3,7 +3,7 @@
     <div class="row">
       <Header title="Registro de gastos" />
     </div>
-    <div class="bg-body-secondary mt-5 h-75 pt-5 rounded-2">
+    <div class="bg-body-secondary mt-5 h-75 pt-3 rounded-2">
       <div class="d-flex flex-column align-items-center gap-5">
         <div class="d-flex align-items-center gap-3">
           <label class="text-body-secondary fw-semibold fs-5" for="fecha">Fecha:</label>
@@ -88,6 +88,7 @@ import { ref } from 'vue'
 import type { IGasto } from '../../interfaces/IGasto'
 import createGasto from '../../helpers/services/createGastos/createGastos'
 import type { Ref } from 'vue'
+import { useRouter } from 'vue-router'
 import {
   validarFecha,
   validarTipoDePago,
@@ -95,6 +96,7 @@ import {
   validarCantidad
 } from '../../helpers/validacionesRegistroGastos/validationRegistroGastos'
 
+const router = useRouter()
 const fecha = ref('')
 const tipoDePago = ref('')
 const categoria = ref('')
@@ -116,6 +118,7 @@ function guardar() {
   infoSuccess.value = 'Guardado correctamente!'
 
   let gasto: Ref<IGasto> = ref({
+    id: 0,
     categoria: categoria.value,
     cantidad: cantidad.value,
     fecha: fecha.value,
@@ -126,6 +129,10 @@ function guardar() {
   const jsonObj = JSON.parse(usuarioJSON)
 
   createGasto(jsonObj.id, gasto.value)
+
+  setTimeout(() => {
+    router.push("/")
+  }, 2000)
 }
 </script>
 
