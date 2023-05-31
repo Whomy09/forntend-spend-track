@@ -17,9 +17,12 @@
         <td>{{ presupuesto.categoria }}</td>
         <td>{{ presupuesto.fecha }}</td>
         <td>${{ presupuesto.cantidad }}</td>
-        <td>
+        <td class="d-flex gap-2">
           <button class="btn btn-danger" @click="eliminarPresupuesto(presupuesto.id)">
             <i class="fa-solid fa-trash"></i>
+          </button>
+          <button class="btn btn-warning" @click="editarPresupuesto(presupuesto)">
+            <i class="fa-solid fa-pencil text-white"></i>
           </button>
         </td>
       </tr>
@@ -33,11 +36,13 @@ import { ref } from 'vue'
 import type { Ref } from 'vue'
 import getAllPresupuestos from '../../helpers/services/getAllPresupuestos/getAllPresupuestos'
 import deletePresupuesto from '@/helpers/services/deletePresupuesto/deletePresupuesto'
+import { useRouter } from 'vue-router'
 
 let presupuestos: Ref<IPresupuesto[]> = ref([])
 
 const usuarioJSON = localStorage.getItem('usuario')
 const jsonObj = JSON.parse(usuarioJSON)
+const router = useRouter()
 
 async function llenarTablaPresupuestos(id: number) {
   presupuestos.value = await getAllPresupuestos(id)
@@ -46,6 +51,11 @@ async function llenarTablaPresupuestos(id: number) {
 function eliminarPresupuesto(id: number) {
   deletePresupuesto(id)
   location.reload()
+}
+
+function editarPresupuesto(presupuesto: IPresupuesto) {
+  localStorage.setItem('presupuesto', JSON.stringify(presupuesto))
+  router.push('/editar-presupuesto')
 }
 
 llenarTablaPresupuestos(jsonObj.id)
