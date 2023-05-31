@@ -8,6 +8,7 @@ import RegistrarPresupuestoView from '@/views/RegistrarPresupuestoView/Registrar
 import Login from '@/views/LoginView/LoginView.vue'
 import Register from '@/views/RegisterView/RegisterView.vue'
 import EditarPresupuestoView from '../views/EditarPresupuestoView/EditarPresupuestoView.vue'
+import EdiarGastoView from '../views/EditarGastoView/EditarGastoView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -48,12 +49,16 @@ const router = createRouter({
     {
       path: '/editar-presupuesto',
       component: EditarPresupuestoView
+    },
+    {
+      path: '/editar-gasto',
+      component: EdiarGastoView
     }
   ]
 })
 
 router.beforeEach((to, from, next) => {
-  const usuario = localStorage.getItem('usuario');
+  const usuario = localStorage.getItem('usuario')
   if (to.path === '/' && !usuario) {
     next('/login')
   } else {

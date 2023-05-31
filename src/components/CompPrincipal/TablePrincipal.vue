@@ -19,9 +19,12 @@
         <td>${{ gasto.cantidad }}</td>
         <td>{{ gasto.tipoPago }}</td>
         <td>{{ gasto.fecha }}</td>
-        <td>
+        <td class="d-flex gap-2">
           <button class="btn btn-danger" @click="eliminarGasto(gasto.id)">
             <i class="fa-solid fa-trash"></i>
+          </button>
+          <button class="btn btn-warning" @click="editarGasto(gasto)">
+            <i class="fa-solid fa-pencil text-white"></i>
           </button>
         </td>
       </tr>
@@ -35,10 +38,12 @@ import type { Ref } from 'vue'
 import type { IGasto } from '../../interfaces/IGasto'
 import getAllGastos from '../../helpers/services/getAllGastos/getAllGastos'
 import deleteGasto from '@/helpers/services/deleteGasto/deleteGasto'
+import { useRouter } from 'vue-router'
 
 let gastos: Ref<IGasto[]> = ref([])
 const usuarioJSON = localStorage.getItem('usuario')
 const jsonObj = JSON.parse(usuarioJSON)
+const router = useRouter()
 
 async function llenarTablagastos(id: number) {
   gastos.value = await getAllGastos(id)
@@ -47,6 +52,11 @@ async function llenarTablagastos(id: number) {
 function eliminarGasto(id: number) {
   deleteGasto(id)
   location.reload()
+}
+
+function editarGasto(gasto: IGasto) {
+  localStorage.setItem('gasto', JSON.stringify(gasto))
+  router.push('/editar-gasto')
 }
 
 llenarTablagastos(jsonObj.id)
