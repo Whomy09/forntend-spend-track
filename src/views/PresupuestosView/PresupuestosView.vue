@@ -30,3 +30,9 @@ import Header from '@/components/Header.vue';
 import Navegation from '@/components/Navegation/NavegationBar.vue';
 </script>
 
+<style scoped>
+#contenedor-tabla {
+  overflow-y: scroll;
+}
+</style>
+

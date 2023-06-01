@@ -24,7 +24,7 @@
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Notifications</h1>
+            <h1 class="modal-title fs-2" id="exampleModalLabel">Recordatorios</h1>
             <button
               type="button"
               class="btn-close"
@@ -32,7 +32,44 @@
               aria-label="Close"
             ></button>
           </div>
-          <div class="modal-body">...</div>
+          <div class="modal-body d-flex flex-column gap-2">
+            <div class="w-100 bg-light shadow p-3 d-flex justify-content-between">
+              <span class="fs-5">Comprar la comida</span>
+              <div class="d-flex gap-2">
+                <button class="btn btn-danger">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+                <button class="btn btn-warning">
+                  <i class="fa-solid fa-pencil text-white"></i>
+                </button>
+              </div>
+            </div>
+            <div class="w-100 bg-light shadow p-3 d-flex justify-content-between">
+              <span class="fs-5">Pagar el recibo de internet</span>
+              <div class="d-flex gap-2">
+                <button class="btn btn-danger">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+                <button class="btn btn-warning">
+                  <i class="fa-solid fa-pencil text-white"></i>
+                </button>
+              </div>
+            </div>
+            <div class="w-100 bg-light shadow p-3 d-flex justify-content-between">
+              <span class="fs-5">Pagar el servicio de energia</span>
+              <div class="d-flex gap-2">
+                <button class="btn btn-danger">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+                <button class="btn btn-warning">
+                  <i class="fa-solid fa-pencil text-white"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-primary">AGREGAR</button>
+          </div>
         </div>
       </div>
     </div>
@@ -40,8 +77,6 @@
 </template>
 
 <script lang="ts" setup>
-// import { defineProps } from 'vue'
-
 const props = defineProps({
   title: String
 })

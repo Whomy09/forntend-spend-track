@@ -1,6 +1,6 @@
 <template>
-  <table class="container-fluid">
-    <thead>
+  <table class="container-fluid table table-striped">
+    <thead class="table-dark">
       <tr>
         <th class="border-bottom border-black">#</th>
         <th class="border-bottom border-black">DESCRIPCION</th>
